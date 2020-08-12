@@ -177,7 +177,7 @@ func main() {
 			Usage:  "compress the build context using gzip",
 			EnvVar: "PLUGIN_COMPRESS",
 		},
-		cli.StringFlag{
+		cli.StringSliceFlag{
 			Name:   "repo",
 			Usage:  "docker repository",
 			EnvVar: "PLUGIN_REPO",
@@ -269,7 +269,7 @@ func run(c *cli.Context) error {
 			Pull:        c.BoolT("pull-image"),
 			CacheFrom:   c.StringSlice("cache-from"),
 			Compress:    c.Bool("compress"),
-			Repo:        c.String("repo"),
+			Repos:       c.StringSlice("repo"),
 			Labels:      c.StringSlice("custom-labels"),
 			LabelSchema: c.StringSlice("label-schema"),
 			NoCache:     c.Bool("no-cache"),
